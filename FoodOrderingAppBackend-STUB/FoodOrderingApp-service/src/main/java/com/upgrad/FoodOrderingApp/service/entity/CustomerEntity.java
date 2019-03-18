@@ -5,7 +5,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 /**
- * UserEntity class contains all the attributes to be mapped to all the fields in USERS table in the database.
+ * CustomerEntity class contains all the attributes to be mapped to all the fields in customer table in the database.
  * All the annotations which are used to specify all the constraints to the columns in the database must be correctly implemented.
  */
 

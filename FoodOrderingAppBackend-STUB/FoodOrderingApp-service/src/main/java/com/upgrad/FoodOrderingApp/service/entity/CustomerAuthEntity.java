@@ -9,7 +9,7 @@ import javax.validation.constraints.Size;
 import java.time.ZonedDateTime;
 
 /**
- * UserAuthEntity class contains all the attributes to be mapped to all the fields in USER_AUTH table in the database.
+ * CustomerAuthEntity class contains all the attributes to be mapped to all the fields in customer_auth table in the database.
  * All the annotations which are used to specify all the constraints to the columns in the database must be correctly implemented.
  */
 
@@ -29,9 +29,9 @@ public class CustomerAuthEntity {
 
     @ManyToOne
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinColumn(name = "USER_ID")
+    @JoinColumn(name = "CUSTOMER_ID")
     @NotNull
-    private CustomerEntity user;
+    private CustomerEntity customer;
 
     @Column(name = "ACCESS_TOKEN")
     @NotNull
@@ -81,12 +81,12 @@ public class CustomerAuthEntity {
         this.uuid = uuid;
     }
 
-    public CustomerEntity getUser() {
-        return user;
+    public CustomerEntity getCustomer() {
+        return customer;
     }
 
-    public void setUser(CustomerEntity user) {
-        this.user = user;
+    public void setCustomer(CustomerEntity customer) {
+        this.customer = customer;
     }
 
     public ZonedDateTime getLoginAt() {
