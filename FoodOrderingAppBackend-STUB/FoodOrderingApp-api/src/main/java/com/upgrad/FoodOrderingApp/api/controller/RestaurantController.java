@@ -15,9 +15,9 @@ public class RestaurantController implements EndPointIdentifier {
      */
 
     @GetMapping(path = "/restaurant", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<List<RestaurantDetailsResponse>> getAllRestaurants(@RequestHeader("authorization") String accessToken) throws AuthorizationFailedException {
+    public ResponseEntity<List<RestaurantDetailsResponse>> getRestaurants() {
 
-        List<RestaurantEntity> restaurantEntityList = restaurantService.getAllRestaurants(accessToken);
+        List<RestaurantEntity> restaurantEntityList = restaurantService.getRestaurants();
 
         List<RestaurantDetailsResponse> restaurantDetailsResponseList = new ArrayList<RestaurantDetailsResponse>();
         if (!restaurantEntityList.isEmpty()) {
