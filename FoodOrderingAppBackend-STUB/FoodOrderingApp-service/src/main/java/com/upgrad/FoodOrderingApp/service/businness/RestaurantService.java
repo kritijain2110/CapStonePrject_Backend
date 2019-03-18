@@ -1,7 +1,7 @@
 package com.upgrad.foodorderingapp.service.business;
 
 
-import com.upgrad.foodorderingapp.service.dao.RestaurantDao;
+import com.upgrad.FoodOrderingApp.service.dao.RestaurantDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -17,7 +17,7 @@ public class RestaurantService implements EndPointIdentifier {
     RestaurantDao restaurantDao;
 
     @Transactional(propagation = Propagation.REQUIRED)
-    public List<QuestionEntity> getRestaurants() {
+    public List<RestaurantEntity> getRestaurants() {
 
         List<RestaurantEntity> restaurantEntityList = new ArrayList<>();
         restaurantEntityList = restaurantDao.getRestaurants();
