@@ -6,6 +6,7 @@ import com.google.common.hash.Hashing;
 import com.upgrad.FoodOrderingApp.api.config.Constants;
 import com.upgrad.FoodOrderingApp.service.businness.CustomerAuthService;
 import com.upgrad.FoodOrderingApp.service.businness.CustomerService;
+import com.upgrad.FoodOrderingApp.service.entity.CustomerAuthEntity;
 import com.upgrad.FoodOrderingApp.service.entity.CustomerEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -102,6 +103,36 @@ public class CustomerController {
         }  else{
             customerAuthService.removeAccessToken(accessToken);
             return new ResponseEntity<>("You have logged out successfully!",HttpStatus.OK);}
+    }
+
+    //Method to change the password
+    @PutMapping("/password")
+    @CrossOrigin
+    public ResponseEntity<?> changePassword(@RequestParam String oldPassword, @RequestParam String newPassword, @RequestHeader String accessToken) {
+        CustomerAuthEntity customerAuthEntity = customerAuthService.isCustomerLoggedIn(accessToken);
+        if (customerAuthEntity == null) {
+            return new ResponseEntity<>("Please Login first to access this endpoint!", HttpStatus.UNAUTHORIZED);
+        }
+
+        if (customerAuthEntity.getLogoutAt() != null) {
+            return new ResponseEntity<Object>("You have already logged out. Please Login first to access this endpoint!", HttpStatus.UNAUTHORIZED);
+        }
+
+        CustomerEntity customerEntity = customerAuthEntity.getCustomer();
+        String oldPasswordHex = Hashing.sha256().hashString(oldPassword, Charsets.US_ASCII).toString();
+        String oldPasswordDb = customerEntity.getPassword();
+        if (!oldPasswordDb.equals(oldPasswordHex)) {
+            return new ResponseEntity<>("Your password did not match your old password!", HttpStatus.BAD_REQUEST);
+        }
+
+        if (newPassword.length() < Constants.PASSWORD_MIN_LENGTH || newPassword.equals(newPassword.toLowerCase()) || !Constants.NUMBER_REGEX.matcher(newPassword).matches() || !Constants.SPECIAL_REGEX.matcher(newPassword).find()) {
+            return new ResponseEntity<Object>("Weak password!", HttpStatus.BAD_REQUEST);
+        }
+
+        String newPasswordHex = Hashing.sha256().hashString(newPassword, Charsets.US_ASCII).toString();
+        customerEntity.setPassword(newPasswordHex);
+        customerService.updateCustomer(customerEntity);
+        return new ResponseEntity<>("Password updated successfully!", HttpStatus.OK);
     }
 
 

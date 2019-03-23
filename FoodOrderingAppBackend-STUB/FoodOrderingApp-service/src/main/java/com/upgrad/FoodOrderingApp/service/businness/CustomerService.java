@@ -8,4 +8,6 @@ public interface CustomerService {
     CustomerEntity findCustomer(String contactNumber);
 
     void addCustomer(String firstName, String lastName, String email, String contactNumber, String password);
+
+    void updateCustomer (CustomerEntity customerEntity);
 }

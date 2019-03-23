@@ -43,4 +43,9 @@ public class CustomerServiceImpl implements CustomerService {
         customer.save(customerEntity);
     }
 
+    @Override
+    public void updateCustomer(CustomerEntity customerEntity) {
+        customer.save(customerEntity);
+    }
+
 }
