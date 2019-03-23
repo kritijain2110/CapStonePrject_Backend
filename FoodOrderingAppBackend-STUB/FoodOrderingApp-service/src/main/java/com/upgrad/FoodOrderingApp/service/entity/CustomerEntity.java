@@ -1,5 +1,7 @@
 package com.upgrad.FoodOrderingApp.service.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -18,12 +20,12 @@ public class CustomerEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "UUID")
+    @Column(name = "UUID", nullable = false)
     @Size(max = 64)
     @NotNull
     private String uuid;
 
-    @Column(name = "firstname")
+    @Column(name = "firstname", nullable = false)
     @NotNull
     private String firstName;
 
@@ -31,20 +33,33 @@ public class CustomerEntity {
     @NotNull
     private String lastName;
 
-    @Column(name = "email", unique = true)
+    @Column(name = "email", nullable = false)
     @NotNull
     private String email;
 
-    @Column(name = "contact_number")
+    @Column(name = "contact_number", nullable = false, unique = true)
     private String contactNumber;
 
     @Column(nullable = false)
+    @JsonIgnore
     private String password;
 
     @Column(name = "SALT")
     @NotNull
     @Size(max = 200)
     private String salt;
+
+    public CustomerEntity(){
+    }
+
+    public CustomerEntity(String firstName, String lastName, String email, String contactNumber, String password) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.contactNumber = contactNumber;
+        this.password = password;
+        this.salt = salt;
+    }
 
     public Integer getId() {
         return id;

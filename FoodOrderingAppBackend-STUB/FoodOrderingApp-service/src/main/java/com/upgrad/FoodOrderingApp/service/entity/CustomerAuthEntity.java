@@ -6,7 +6,7 @@ import org.hibernate.annotations.OnDeleteAction;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.time.ZonedDateTime;
+import java.util.Date;
 
 /**
  * CustomerAuthEntity class contains all the attributes to be mapped to all the fields in customer_auth table in the database.
@@ -40,14 +40,23 @@ public class CustomerAuthEntity {
 
     @Column(name = "LOGIN_AT")
     @NotNull
-    private ZonedDateTime loginAt;
+    private Date loginAt;
 
     @Column(name = "LOGOUT_AT")
-    private ZonedDateTime logoutAt;
+    private Date logoutAt;
 
     @Column(name = "EXPIRES_AT")
     @NotNull
-    private ZonedDateTime expiresAt;
+    private Date expiresAt;
+
+    public CustomerAuthEntity() {
+    }
+
+    public CustomerAuthEntity(CustomerEntity customerEntity, @NotNull String accessToken, @NotNull Date loginAt) {
+        this.customer = customerEntity;
+        this.accessToken = accessToken;
+        this.loginAt = loginAt;
+    }
 
     public String getAccessToken() {
         return accessToken;
@@ -57,11 +66,11 @@ public class CustomerAuthEntity {
         this.accessToken = accessToken;
     }
 
-    public ZonedDateTime getExpiresAt() {
+    public Date getExpiresAt() {
         return expiresAt;
     }
 
-    public void setExpiresAt(ZonedDateTime expiresAt) {
+    public void setExpiresAt(Date expiresAt) {
         this.expiresAt = expiresAt;
     }
 
@@ -89,19 +98,19 @@ public class CustomerAuthEntity {
         this.customer = customer;
     }
 
-    public ZonedDateTime getLoginAt() {
+    public Date getLoginAt() {
         return loginAt;
     }
 
-    public void setLoginAt(ZonedDateTime loginAt) {
+    public void setLoginAt(Date loginAt) {
         this.loginAt = loginAt;
     }
 
-    public ZonedDateTime getLogoutAt() {
+    public Date getLogoutAt() {
         return logoutAt;
     }
 
-    public void setLogoutAt(ZonedDateTime logoutAt) {
+    public void setLogoutAt(Date logoutAt) {
         this.logoutAt = logoutAt;
     }
 }
