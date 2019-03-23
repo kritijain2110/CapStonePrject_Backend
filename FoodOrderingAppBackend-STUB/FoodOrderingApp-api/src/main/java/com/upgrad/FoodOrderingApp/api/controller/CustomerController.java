@@ -4,14 +4,19 @@ package com.upgrad.FoodOrderingApp.api.controller;
 import com.google.common.base.Charsets;
 import com.google.common.hash.Hashing;
 import com.upgrad.FoodOrderingApp.api.config.Constants;
+import com.upgrad.FoodOrderingApp.service.businness.CustomerAuthService;
 import com.upgrad.FoodOrderingApp.service.businness.CustomerService;
 import com.upgrad.FoodOrderingApp.service.entity.CustomerEntity;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+import java.util.UUID;
 import java.util.regex.Matcher;
 
 @RestController
@@ -21,6 +26,9 @@ public class CustomerController {
 
     @Autowired
     private CustomerService customerService;
+
+    @Autowired
+    private CustomerAuthService customerAuthService;
 
 
     //Method to sign up the user
@@ -53,6 +61,33 @@ public class CustomerController {
         customerService.addCustomer(firstName, lastName, email, contactNumber, sha256hex);
 
         return new ResponseEntity<Object>("User with contact number "+ contactNumber +" successfully registered!", HttpStatus.CREATED);
+    }
+
+
+    //Method to login the user
+
+    @PostMapping("/login")
+    @CrossOrigin
+    public ResponseEntity<?> login(@RequestParam String contactNumber, @RequestParam String password){
+        String passwordByUser = String.valueOf(customerService.findCustomerPassword(contactNumber));
+        String sha256hex = Hashing.sha256()
+                .hashString(password, Charsets.US_ASCII)
+                .toString();
+        if(customerService.findCustomerPassword(contactNumber)==null) return new ResponseEntity<>("This contact number has not been registered!",HttpStatus.OK);
+        else if (!(passwordByUser.equalsIgnoreCase(sha256hex))) {
+            return new ResponseEntity<>("Invalid Credentials",HttpStatus.UNAUTHORIZED);
+        }
+        else{
+            CustomerEntity customerEntity = customerService.findCustomer(contactNumber);
+            String accessToken = UUID.randomUUID().toString();
+            customerAuthService.addAccessToken(customerEntity.getId(),accessToken);
+            HttpHeaders headers = new HttpHeaders();
+            headers.add("access-token", accessToken);
+            List<String> header = new ArrayList<>();
+            header.add("access-token");
+            headers.setAccessControlExposeHeaders(header);
+            return new ResponseEntity<>(customerEntity,headers,HttpStatus.OK);
+        }
     }
 
 
