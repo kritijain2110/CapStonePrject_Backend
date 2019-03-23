@@ -90,5 +90,19 @@ public class CustomerController {
         }
     }
 
+    //Method to logout the user
+    @PutMapping("/logout")
+    @CrossOrigin
+    public ResponseEntity<String> logout(@RequestHeader String accessToken){
+        if(customerAuthService.isCustomerLoggedIn(accessToken) == null){
+            return new ResponseEntity<>("Please Login first to access this endpoint!", HttpStatus.UNAUTHORIZED);
+        }
+        else if(customerAuthService.isCustomerLoggedIn(accessToken).getLogoutAt()!=null){
+            return new ResponseEntity<>("You have already logged out. Please Login first to access this endpoint!", HttpStatus.UNAUTHORIZED);
+        }  else{
+            customerAuthService.removeAccessToken(accessToken);
+            return new ResponseEntity<>("You have logged out successfully!",HttpStatus.OK);}
+    }
+
 
 }
