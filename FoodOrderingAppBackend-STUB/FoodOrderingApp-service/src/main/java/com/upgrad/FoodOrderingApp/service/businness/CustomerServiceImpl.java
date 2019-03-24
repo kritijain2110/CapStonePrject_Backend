@@ -44,8 +44,35 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
+    public void updateCustomerDetails(String firstname, String lastname, CustomerEntity customerEntity) {
+        Integer userid = customerEntity.getId();
+        if(lastname == null){
+            lastname = customerEntity.getLastName();
+        }
+        System.out.println("name: "+firstname+" "+lastname+" "+userid);
+
+        customer.updateddetails(firstname,lastname,userid);
+
+    }
+
+    @Override
     public void updateCustomer(CustomerEntity customerEntity) {
         customer.save(customerEntity);
+    }
+
+    @Override
+    public Integer updateCustomerPassword(String password, Integer id) {
+        return customer.updatePassword(password,id);
+    }
+
+    @Override
+    public CustomerEntity getCustomerById(Integer id) {
+        return customer.findPasswordById(id);
+    }
+
+    @Override
+    public CustomerEntity findCustomerById(long id) {
+        return customer.findCustomerByID(id);
     }
 
 }

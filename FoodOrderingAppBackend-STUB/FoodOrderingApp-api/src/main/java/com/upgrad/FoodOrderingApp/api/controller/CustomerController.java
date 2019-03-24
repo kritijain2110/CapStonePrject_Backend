@@ -105,6 +105,25 @@ public class CustomerController {
             return new ResponseEntity<>("You have logged out successfully!",HttpStatus.OK);}
     }
 
+    //Method to update the user
+    @PutMapping("/user")
+    @CrossOrigin
+    public ResponseEntity<String> updateuser(@RequestHeader String accessToken, @RequestParam(value = "First Name") String firstname, @RequestParam(value = "Last Name", required = false) String lastname){
+        CustomerAuthEntity tokendetails = customerAuthService.isCustomerLoggedIn(accessToken);
+        if(tokendetails == null){
+            return new ResponseEntity<>("Please Login first to access this endpoint!", HttpStatus.UNAUTHORIZED);
+        }
+        else if(customerAuthService.isCustomerLoggedIn(accessToken).getLogoutAt()!=null){
+            return new ResponseEntity<>("You have already logged out. Please Login first to access this endpoint!", HttpStatus.UNAUTHORIZED);
+        }  else{
+            CustomerEntity customerEntity = tokendetails.getCustomer();
+            customerService.updateCustomerDetails(firstname,lastname,customerEntity);
+            CustomerEntity updated = customerService.findCustomerById(customerEntity.getId());
+            return new ResponseEntity(updated, HttpStatus.OK);
+        }
+
+    }
+
     //Method to change the password
     @PutMapping("/password")
     @CrossOrigin
