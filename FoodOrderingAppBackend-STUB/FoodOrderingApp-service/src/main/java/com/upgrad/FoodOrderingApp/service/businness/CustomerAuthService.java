@@ -9,4 +9,6 @@ public interface CustomerAuthService {
     void removeAccessToken(String accessToken);
 
     CustomerAuthEntity isCustomerLoggedIn(String accessToken);
+
+    Integer getCustomerId(String accessToken);
 }

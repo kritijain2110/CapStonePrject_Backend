@@ -15,4 +15,7 @@ public interface CustomerAuthDao extends CrudRepository <CustomerAuthEntity, Int
     @Modifying
     @Query(nativeQuery = true,value="UPDATE CUSTOMER_AUTH SET logout_at=NOW() WHERE access_token=?1")
     void removeAuthToken( String accessToken);
+
+    @Query(nativeQuery = true,value = "SELECT customer_id FROM CUSTOMER_AUTH_TOKEN WHERE access_token=?1")
+    Integer getCustomerId(String accessToken);
 }

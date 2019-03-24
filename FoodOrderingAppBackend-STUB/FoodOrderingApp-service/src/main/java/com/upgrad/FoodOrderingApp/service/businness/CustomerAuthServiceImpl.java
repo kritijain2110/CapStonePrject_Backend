@@ -36,9 +36,14 @@ public class CustomerAuthServiceImpl implements CustomerAuthService {
         customerAuthDao.removeAuthToken(accessToken);
     }
 
-    // This method is used to check whether the user is logged in or not
+    // check whether the user is logged in or not
     @Override
     public CustomerAuthEntity isCustomerLoggedIn(String accessToken) {
         return customerAuthDao.isCustomerLoggedIn(accessToken);
+    }
+
+    @Override
+    public Integer getCustomerId(String accessToken) {
+        return customerAuthDao.getCustomerId(accessToken);
     }
 }
