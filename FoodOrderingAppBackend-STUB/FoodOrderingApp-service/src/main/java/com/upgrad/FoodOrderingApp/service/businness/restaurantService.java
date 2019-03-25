@@ -23,6 +23,38 @@ public class RestaurantService implements EndPointIdentifier {
 
     }
 
+    @Transactional(propagation = Propagation.REQUIRED)
+    public List<RestaurantEntity> getAllRestaurantsByName(String name) {
+
+        return restaurantDao.getAllRestaurantsByName(name);
+    }
+
+    @Transactional(propagation = Propagation.REQUIRED)
+    public RestaurantEntity getRestaurantByUuid(String rUuid) throws RestaurantNotFoundException {
+        RestaurantEntity re = restaurantDao.getRestaurantByUuid(rUuid);
+        if (re == null) {
+            throw new RestaurantNotFoundException("RNF-001", "No restaurant by this id");
+        } else {
+            return re;
+        }
+    }
+
+    @Transactional(propagation = Propagation.REQUIRED)
+    public RestaurantEntity getRestaurantById(RestaurantEntity re) throws RestaurantNotFoundException {
+        RestaurantEntity r = restaurantDao.getRestaurantById(re);
+        if (r == null) {
+            throw new RestaurantNotFoundException("RNF-001", "No restaurant by this id");
+        } else {
+            return re;
+        }
+    }
+
+    @Transactional(propagation = Propagation.REQUIRED)
+    public RestaurantEntity updateRestaurantDetails(RestaurantEntity re) {
+        return restaurantDao.updateRestaurantDetails(re);
+    }
+}
+
 }
 
 

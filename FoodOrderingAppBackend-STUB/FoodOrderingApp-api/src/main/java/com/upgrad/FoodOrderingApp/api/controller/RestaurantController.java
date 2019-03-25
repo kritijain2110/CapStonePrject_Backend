@@ -182,4 +182,78 @@ public class RestaurantController implements EndPointIdentifier {
         }
 
 
+
+        /**
+         * Method implements the getRestaurantsByRrestaurantId endpoint
+         *
+         * @param String restaurant_id used to get name of restaurant
+         * @return ResponseEntity to indicate the status of the query as well as the restaurant by name
+         * @throws RestaurantNotFoundException , ItemNotFoundException
+         */
+        @GetMapping(path = "/api/restaurant/{restaurant_id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+        public ResponseEntity<RestaurantDetailsResponse> getRestaurantByRestaurantId(@PathVariable String restaurant_id) throws RestaurantNotFoundException, ItemNotFoundException {
+
+            RestaurantDetailsResponse restaurantDetailsResponse = null;
+            if (restaurant_id == null) {
+                throw new RestaurantNotFoundException("RF-002", "Restaurant id field should not be empty");
+
+            } else {
+                RestaurantEntity r = restaurantService.getRestaurantByUuid(restaurant_id);
+
+
+                //Get the categories
+                List<CategoryList> categoryListList = new ArrayList<>();
+                List<CategoryEntity> categories = restaurantCategoryService.getAllCategoryEntitiesByRestaurant(r);
+
+                for (CategoryEntity c : categories) {
+                    List<CategoryItemEntity> categoryItemEntities = categoryItemService.getCategoryItemEntityListByCategory(c);
+                    List<ItemEntity> itemEntityList = new ArrayList<>();
+                    for (CategoryItemEntity cie : categoryItemEntities) {
+                        itemEntityList.add(itemService.getItemById(cie.getItem()));
+                    }
+                    List<ItemList> itemListList = new ArrayList<>();
+                    for (ItemEntity ie : itemEntityList) {
+                        ItemList itemList = new ItemList().id(UUID.fromString(ie.getUuid())).itemName(ie.getItemName())
+                                .price(ie.getPrice()).itemType(ItemList.ItemTypeEnum.valueOf(ie.getType()));
+                        itemListList.add(itemList);
+                    }
+
+                    CategoryList categoryList = new CategoryList()
+                            .id(UUID.fromString(c.getUuid())).categoryName(c.getCategoryName()).itemList(itemListList);
+                    categoryListList.add(categoryList);
+
+                }
+                RestaurantDetailsResponseAddress restaurantDetailsResponseAddress = new RestaurantDetailsResponseAddress();
+                RestaurantDetailsResponseAddressState restaurantDetailsResponseAddressState = new RestaurantDetailsResponseAddressState();
+
+                AddressEntity addressEntity = addressService.getAddressById(r.getAddress());
+
+                StateEntity stateEntity = addressService.getStateById(addressEntity.getStateEntity());
+                restaurantDetailsResponseAddressState.setId(UUID.fromString(stateEntity.getUuid()));
+                restaurantDetailsResponseAddressState.setStateName(stateEntity.getState_name());
+
+                restaurantDetailsResponseAddress.city(addressEntity.getCity());
+                restaurantDetailsResponseAddress.pincode(addressEntity.getPincode());
+                restaurantDetailsResponseAddress.flatBuildingName(addressEntity.getFlat_buil_number());
+                restaurantDetailsResponseAddress.locality(addressEntity.getLocality());
+                restaurantDetailsResponseAddress.id(UUID.fromString(addressEntity.getUuid()));
+                restaurantDetailsResponseAddress.state(restaurantDetailsResponseAddressState);
+
+                restaurantDetailsResponse = new RestaurantDetailsResponse().id(UUID.fromString(r.getUuid()))
+                        .address(restaurantDetailsResponseAddress)
+                        .numberCustomersRated(r.getNumberOfCustomersRated()).photoURL(r.getPhotoUrl())
+                        .restaurantName(r.getRestaurantName()).averagePrice(r.getAveragePriceForTwo())
+                        .customerRating(r.getCustomerRating()).categories(categoryListList);
+
+
+            }
+
+
+
+            return new ResponseEntity(restaurantDetailsResponse, HttpStatus.OK);
+
+
+        }
+
+
     }

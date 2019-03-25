@@ -53,4 +53,53 @@ public class RestaurantDao {
         }
     }
 
+    public List<RestaurantEntity> getAllRestaurantsByName(String restaurantName) {
+        try {
+            String query = "select r from RestaurantEntity r where lower(r.restaurantName) like lower(:name) order by r.customerRating desc";
+            return entityManager.createQuery(query, RestaurantEntity.class)
+                    .setParameter("name", '%' + restaurantName + '%').getResultList();
+
+        } catch (NoResultException nre) {
+
+            return new ArrayList<RestaurantEntity>();
+        }
+    }
+
+
+    public RestaurantEntity getRestaurantByUuid(String restaurantId) {
+        try {
+            String query = "select r from RestaurantEntity r where r.uuid = :uuid";
+            return entityManager.createQuery(query, RestaurantEntity.class)
+                    .setParameter("uuid", restaurantId).getSingleResult();
+
+        } catch (NoResultException nre) {
+
+            return null;
+        }
+    }
+
+
+    public RestaurantEntity updateRestaurantDetails(RestaurantEntity restaurantEntity) {
+
+        entityManager.merge(restaurantEntity);
+        return restaurantEntity;
+
+    }
+
+
+    public RestaurantEntity getRestaurantById(RestaurantEntity restaurantEntity) {
+
+
+        try {
+
+            String query = "select u from RestaurantEntity u where u.id = :userInput";
+            return entityManager.createQuery(query, RestaurantEntity.class)
+                    .setParameter("userInput", restaurantEntity.getId()).getSingleResult();
+
+        } catch (NoResultException nre) {
+
+            return null;
+        }
+    }
+
 }
