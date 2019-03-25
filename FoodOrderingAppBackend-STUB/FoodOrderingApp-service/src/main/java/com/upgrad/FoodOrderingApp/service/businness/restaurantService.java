@@ -53,8 +53,10 @@ public class RestaurantService implements EndPointIdentifier {
     public RestaurantEntity updateRestaurantDetails(RestaurantEntity re) {
         return restaurantDao.updateRestaurantDetails(re);
     }
+
+    
 }
 
-}
+
 
 

@@ -83,21 +83,22 @@ public class RestaurantController implements EndPointIdentifier {
                 AddressEntity addressEntity = addressService.getAddressById(r.getAddress());
 
                 StateEntity stateEntity = addressService.getStateById(addressEntity.getStateEntity());
-                restaurantDetailsResponseAddressState.setId(UUID.fromString(stateEntity.getUuid()));
-                restaurantDetailsResponseAddressState.setStateName(stateEntity.getState_name());
+                restaurantDetailsResponseAddressState.setId(UUID.fromString(stateEntity.getId()));
+                restaurantDetailsResponseAddressState.setStateName(stateEntity.getStateName());
 
                 restaurantDetailsResponseAddress.city(addressEntity.getCity());
-                restaurantDetailsResponseAddress.pincode(addressEntity.getPincode());
-                restaurantDetailsResponseAddress.flatBuildingName(addressEntity.getFlat_buil_number());
+                restaurantDetailsResponseAddress.pincode(addressEntity.getZipcode());
+                restaurantDetailsResponseAddress.flatBuildingName(addressEntity.getFlatbuildNumber());
                 restaurantDetailsResponseAddress.locality(addressEntity.getLocality());
-                restaurantDetailsResponseAddress.id(UUID.fromString(addressEntity.getUuid()));
+                restaurantDetailsResponseAddress.id(UUID.fromString(addressEntity.getId()));
                 restaurantDetailsResponseAddress.state(restaurantDetailsResponseAddressState);
 
                 RestaurantList restaurant = new RestaurantList().id(UUID.fromString(r.getUuid()))
                         .address(restaurantDetailsResponseAddress)
-                        .numberCustomersRated(r.getNumberOfCustomersRated()).photoURL(r.getPhotoUrl())
-                        .restaurantName(r.getRestaurantName()).averagePrice(r.getAveragePriceForTwo())
-                        .customerRating(r.getCustomerRating()).categories(categoriesString);
+                        .numberCustomersRated(r.getNumber_of_customers_rated()).photoURL(r.getPhotoUrl())
+                        .restaurantName(r.getRestaurantName()).averagePrice(r.getAverage_price_for_two())
+                        .customerRating(r.getCustomer_rating()).categories(categoriesString);
+
 
 
                 restaurantList.add(restaurant);
@@ -155,21 +156,21 @@ public class RestaurantController implements EndPointIdentifier {
                     AddressEntity addressEntity = addressService.getAddressById(r.getAddress());
 
                     StateEntity stateEntity = addressService.getStateById(addressEntity.getStateEntity());
-                    restaurantDetailsResponseAddressState.setId(UUID.fromString(stateEntity.getUuid()));
-                    restaurantDetailsResponseAddressState.setStateName(stateEntity.getState_name());
+                    restaurantDetailsResponseAddressState.setId(UUID.fromString(stateEntity.getId()));
+                    restaurantDetailsResponseAddressState.setStateName(stateEntity.getStateName());
 
                     restaurantDetailsResponseAddress.city(addressEntity.getCity());
-                    restaurantDetailsResponseAddress.pincode(addressEntity.getPincode());
-                    restaurantDetailsResponseAddress.flatBuildingName(addressEntity.getFlat_buil_number());
+                    restaurantDetailsResponseAddress.pincode(addressEntity.getZipcode());
+                    restaurantDetailsResponseAddress.flatBuildingName(addressEntity.getFlatbuildNumber());
                     restaurantDetailsResponseAddress.locality(addressEntity.getLocality());
-                    restaurantDetailsResponseAddress.id(UUID.fromString(addressEntity.getUuid()));
+                    restaurantDetailsResponseAddress.id(UUID.fromString(addressEntity.getId()));
                     restaurantDetailsResponseAddress.state(restaurantDetailsResponseAddressState);
 
                     RestaurantList restaurant = new RestaurantList().id(UUID.fromString(r.getUuid()))
                             .address(restaurantDetailsResponseAddress)
-                            .numberCustomersRated(r.getNumberOfCustomersRated()).photoURL(r.getPhotoUrl())
-                            .restaurantName(r.getRestaurantName()).averagePrice(r.getAveragePriceForTwo())
-                            .customerRating(r.getCustomerRating()).categories(categoriesString);
+                            .numberCustomersRated(r.getNumber_of_customers_rated()).photoURL(r.getPhotoUrl())
+                            .restaurantName(r.getRestaurantName()).averagePrice(r.getAverage_price_for_two())
+                            .customerRating(r.getCustomer_rating()).categories(categoriesString);
 
 
                     restaurantList.add(restaurant);
@@ -229,21 +230,21 @@ public class RestaurantController implements EndPointIdentifier {
                 AddressEntity addressEntity = addressService.getAddressById(r.getAddress());
 
                 StateEntity stateEntity = addressService.getStateById(addressEntity.getStateEntity());
-                restaurantDetailsResponseAddressState.setId(UUID.fromString(stateEntity.getUuid()));
-                restaurantDetailsResponseAddressState.setStateName(stateEntity.getState_name());
+                restaurantDetailsResponseAddressState.setId(UUID.fromString(stateEntity.getId()));
+                restaurantDetailsResponseAddressState.setStateName(stateEntity.getStateName());
 
                 restaurantDetailsResponseAddress.city(addressEntity.getCity());
-                restaurantDetailsResponseAddress.pincode(addressEntity.getPincode());
-                restaurantDetailsResponseAddress.flatBuildingName(addressEntity.getFlat_buil_number());
+                restaurantDetailsResponseAddress.pincode(addressEntity.getZipcode());
+                restaurantDetailsResponseAddress.flatBuildingName(addressEntity.getFlatbuildNumber());
                 restaurantDetailsResponseAddress.locality(addressEntity.getLocality());
-                restaurantDetailsResponseAddress.id(UUID.fromString(addressEntity.getUuid()));
+                restaurantDetailsResponseAddress.id(UUID.fromString(addressEntity.getId()));
                 restaurantDetailsResponseAddress.state(restaurantDetailsResponseAddressState);
 
                 restaurantDetailsResponse = new RestaurantDetailsResponse().id(UUID.fromString(r.getUuid()))
                         .address(restaurantDetailsResponseAddress)
-                        .numberCustomersRated(r.getNumberOfCustomersRated()).photoURL(r.getPhotoUrl())
-                        .restaurantName(r.getRestaurantName()).averagePrice(r.getAveragePriceForTwo())
-                        .customerRating(r.getCustomerRating()).categories(categoryListList);
+                        .numberCustomersRated(r.getNumber_of_customers_rated()).photoURL(r.getPhotoUrl())
+                        .restaurantName(r.getRestaurantName()).averagePrice(r.getAverage_price_for_two())
+                        .customerRating(r.getCustomer_rating()).categories(categoriesString);
 
 
             }
@@ -294,24 +295,24 @@ public class RestaurantController implements EndPointIdentifier {
                     RestaurantDetailsResponseAddress restaurantDetailsResponseAddress = new RestaurantDetailsResponseAddress();
                     RestaurantDetailsResponseAddressState restaurantDetailsResponseAddressState = new RestaurantDetailsResponseAddressState();
 
-                    AddressEntity addressEntity = addressService.getAddressById(r.getAddress());
+                    AddressEntity addressEntity = AddressServiceImpl.getaddressById(r.getAddress());
 
-                    StateEntity stateEntity = addressService.getStateById(addressEntity.getStateEntity());
-                    restaurantDetailsResponseAddressState.setId(UUID.fromString(stateEntity.getUuid()));
-                    restaurantDetailsResponseAddressState.setStateName(stateEntity.getState_name());
+                    StateEntity stateEntity = AddressServiceImpl.getId(addressEntity.StateEntity());
+                    restaurantDetailsResponseAddressState.setId(UUID.fromString(stateEntity.getId()));
+                    restaurantDetailsResponseAddressState.setStateName(stateEntity.getStateName());
 
                     restaurantDetailsResponseAddress.city(addressEntity.getCity());
-                    restaurantDetailsResponseAddress.pincode(addressEntity.getPincode());
-                    restaurantDetailsResponseAddress.flatBuildingName(addressEntity.getFlat_buil_number());
+                    restaurantDetailsResponseAddress.pincode(addressEntity.getZipcode());
+                    restaurantDetailsResponseAddress.flatBuildingName(addressEntity.getFlatbuildNumber());
                     restaurantDetailsResponseAddress.locality(addressEntity.getLocality());
-                    restaurantDetailsResponseAddress.id(UUID.fromString(addressEntity.getUuid()));
+                    restaurantDetailsResponseAddress.id(UUID.fromString(addressEntity.getId()));
                     restaurantDetailsResponseAddress.state(restaurantDetailsResponseAddressState);
 
                     RestaurantList restaurant = new RestaurantList().id(UUID.fromString(r.getUuid()))
                             .address(restaurantDetailsResponseAddress)
-                            .numberCustomersRated(r.getNumberOfCustomersRated()).photoURL(r.getPhotoUrl())
-                            .restaurantName(r.getRestaurantName()).averagePrice(r.getAveragePriceForTwo())
-                            .customerRating(r.getCustomerRating()).categories(categoriesString);
+                            .numberCustomersRated(r.getNumber_of_customers_rated()).photoURL(r.getPhotoUrl())
+                            .restaurantName(r.getRestaurantName()).averagePrice(r.getAverage_price_for_two())
+                            .customerRating(r.getCustomer_rating()).categories(categoriesString);
 
 
                     restaurantList.add(restaurant);
@@ -323,6 +324,43 @@ public class RestaurantController implements EndPointIdentifier {
 
 
 
+        }
+
+        /**
+         * Method implements the updateRestaurantDetails endpoint
+         *
+         * @param Accss token, String restaurant_id, int rating used to get name of restaurant
+         * @return ResponseEntity to indicate the status of the query as well as the restaurant by name
+         * @throws RestaurantNotFoundException, AuthorizationFailedException, InvalidRatingException
+         */
+        @CrossOrigin
+        @PutMapping(path="/api/restaurant/{restaurant_id}")
+        public ResponseEntity<RestaurantUpdatedResponse> updateRestaurantDetails(@RequestHeader("authorization") final String access_token, @RequestParam double customer_rating, @PathVariable String restaurant_id)
+            throws RestaurantNotFoundException, AuthorizationFailedException, InvalidRatingException {
+
+            if (CustomerAuthServiceImpl.isCustomerLoggedIn(access_token)) {
+
+                RestaurantUpdatedResponse restaurantUpdatedResponse = null;
+                if (restaurant_id == null) {
+                    throw new RestaurantNotFoundException("RNF-002", "Restaurant id field should not be empty");
+                } else {
+                    RestaurantEntity restaurantEntity = restaurantService.getRestaurantByUuid(restaurant_id);
+                    if (customer_rating >= 1 && customer_rating <= 5) {
+                        int updatedNumber = restaurantEntity.getNumber_of_customers_rated() + 1;
+                        restaurantEntity.setCustomer_rating(BigDecimal.valueOf(customer_rating));
+                        restaurantEntity.setNumber_of_customers_rated(updatedNumber);
+                        RestaurantEntity updatedRestaurantEntity = restaurantService.updateRestaurantDetails(restaurantEntity);
+                        restaurantUpdatedResponse = new RestaurantUpdatedResponse().id(UUID.fromString(updatedRestaurantEntity.getUuid()))
+                                .status("RESTAURANT RATING UPDATED SUCCESSFULLY");
+                    } else {
+                        throw new InvalidRatingException("IRE-001", "Restaurant should be in the range of 1 to 5");
+                    }
+                }
+                return new ResponseEntity<>(restaurantUpdatedResponse, HttpStatus.OK);
+            } else {
+
+                throw new AuthorizationFailedException("ATHR-001", "Customer is not Logged in");
+            }
         }
 
 

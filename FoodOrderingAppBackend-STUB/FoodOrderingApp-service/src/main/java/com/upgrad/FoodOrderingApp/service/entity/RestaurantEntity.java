@@ -72,6 +72,14 @@ public class RestaurantEntity implements Serializable {
         this.uuid = uuid;
     }
 
+    public String getPhotoUrl() {
+        return uuid;
+    }
+
+    public void setPhotoUrl(String uuid) {
+        this.uuid = uuid;
+    }
+
     public String getRestaurantName() {
         return restaurant_name;
     }
