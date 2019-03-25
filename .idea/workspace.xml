@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8606e92c-701b-455d-a82f-a2aef7014fc0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/FoodOrderingAppBackend-STUB/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/businness/restaurantCategoryService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FoodOrderingAppBackend-STUB/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/dao/Restaurant_CategoryDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FoodOrderingAppBackend-STUB/FoodOrderingApp-api/src/main/java/com/upgrad/FoodOrderingApp/api/controller/RestaurantController.java" beforeDir="false" afterPath="$PROJECT_DIR$/FoodOrderingAppBackend-STUB/FoodOrderingApp-api/src/main/java/com/upgrad/FoodOrderingApp/api/controller/RestaurantController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FoodOrderingAppBackend-STUB/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/businness/RestaurantService.java" beforeDir="false" afterPath="$PROJECT_DIR$/FoodOrderingAppBackend-STUB/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/businness/restaurantService.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,11 +25,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/FoodOrderingAppBackend-STUB/FoodOrderingApp-api/src/main/java/com/upgrad/FoodOrderingApp/api/controller/RestaurantController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="526">
-              <caret line="145" column="32" lean-forward="true" selection-start-line="145" selection-start-column="32" selection-end-line="145" selection-end-column="32" />
+              <caret line="329" column="5" lean-forward="true" selection-start-line="329" selection-start-column="5" selection-end-line="329" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -43,8 +40,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/FoodOrderingAppBackend-STUB/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/businness/restaurantCategoryService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="526">
-              <caret line="54" column="1" lean-forward="true" selection-start-line="54" selection-start-column="1" selection-end-line="54" selection-end-column="1" />
+            <state relative-caret-position="390">
+              <caret line="46" lean-forward="true" selection-start-line="46" selection-end-line="46" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -52,11 +49,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/FoodOrderingAppBackend-STUB/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/dao/Restaurant_CategoryDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="526">
-              <caret line="49" column="1" lean-forward="true" selection-start-line="49" selection-start-column="1" selection-end-line="49" selection-end-column="1" />
+            <state relative-caret-position="458">
+              <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -76,8 +73,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/FoodOrderingAppBackend-STUB/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/businness/restaurantService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="23" column="5" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
+            <state relative-caret-position="17">
+              <caret line="12" column="8" lean-forward="true" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -130,8 +127,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/FoodOrderingAppBackend-STUB/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/dao/RestaurantDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="526">
-              <caret line="56" lean-forward="true" selection-start-line="56" selection-end-line="56" />
+            <state>
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -170,11 +166,12 @@
         <option value="$PROJECT_DIR$/FoodOrderingAppBackend-STUB/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/entity/RestaurantCategoryEntity.java" />
         <option value="$PROJECT_DIR$/FoodOrderingAppBackend-STUB/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/entity/Restaurant_CategoryEntity.java" />
         <option value="$PROJECT_DIR$/FoodOrderingAppBackend-STUB/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/businness/RestaurantService.java" />
-        <option value="$PROJECT_DIR$/FoodOrderingAppBackend-STUB/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/dao/RestaurantDao.java" />
         <option value="$PROJECT_DIR$/FoodOrderingAppBackend-STUB/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/entity/RestaurantEntity.java" />
-        <option value="$PROJECT_DIR$/FoodOrderingAppBackend-STUB/FoodOrderingApp-api/src/main/java/com/upgrad/FoodOrderingApp/api/controller/RestaurantController.java" />
         <option value="$PROJECT_DIR$/FoodOrderingAppBackend-STUB/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/businness/restaurantCategoryService.java" />
         <option value="$PROJECT_DIR$/FoodOrderingAppBackend-STUB/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/dao/Restaurant_CategoryDao.java" />
+        <option value="$PROJECT_DIR$/FoodOrderingAppBackend-STUB/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/businness/restaurantService.java" />
+        <option value="$PROJECT_DIR$/FoodOrderingAppBackend-STUB/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/dao/RestaurantDao.java" />
+        <option value="$PROJECT_DIR$/FoodOrderingAppBackend-STUB/FoodOrderingApp-api/src/main/java/com/upgrad/FoodOrderingApp/api/controller/RestaurantController.java" />
       </list>
     </option>
   </component>
@@ -335,7 +332,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553530280148" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553530953578" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../quora-clone-master" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -388,7 +385,7 @@
       <updated>1552882442631</updated>
       <workItem from="1552882446073" duration="1489000" />
       <workItem from="1552884803122" duration="11877000" />
-      <workItem from="1553526229706" duration="3930000" />
+      <workItem from="1553526229706" duration="4909000" />
     </task>
     <task id="LOCAL-00001" summary="Added controller class RestaurantController. Added functionality in controller class to return JSON query with all restaurant details for &quot;\restaurant&quot;">
       <created>1552885456895</created>
@@ -453,11 +450,25 @@
       <option name="project" value="LOCAL" />
       <updated>1553529023555</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Completed second end point to fetch restaurant by name.">
+      <created>1553530328008</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1553530328008</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Completed third end point to fetch restaurant by id.">
+      <created>1553530944258</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1553530944258</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17296000" />
+    <option name="totallyTimeSpent" value="18275000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -516,7 +527,9 @@
     <MESSAGE value="Updated RestaurantContrller to fetch list of all restaurants" />
     <MESSAGE value="Updated RestaurantDao and RestaurantEntity to fetch list of all restaurants" />
     <MESSAGE value="Finalised first endpoint" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finalised first endpoint" />
+    <MESSAGE value="Completed second end point to fetch restaurant by name." />
+    <MESSAGE value="Completed third end point to fetch restaurant by id." />
+    <option name="LAST_COMMIT_MESSAGE" value="Completed third end point to fetch restaurant by id." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/FoodOrderingAppBackend-STUB/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/entity/RestaurantCategoryEntity" />
@@ -580,10 +593,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/FoodOrderingAppBackend-STUB/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/dao/Restaurant_CategoryDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="458">
+          <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/FoodOrderingAppBackend-STUB/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/businness/restaurantService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="5" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
+        <state relative-caret-position="17">
+          <caret line="12" column="8" lean-forward="true" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -592,8 +615,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/FoodOrderingAppBackend-STUB/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/dao/RestaurantDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="526">
-          <caret line="56" lean-forward="true" selection-start-line="56" selection-end-line="56" />
+        <state>
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FoodOrderingAppBackend-STUB/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/businness/restaurantCategoryService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="46" lean-forward="true" selection-start-line="46" selection-end-line="46" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -603,27 +635,7 @@
     <entry file="file://$PROJECT_DIR$/FoodOrderingAppBackend-STUB/FoodOrderingApp-api/src/main/java/com/upgrad/FoodOrderingApp/api/controller/RestaurantController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="526">
-          <caret line="145" column="32" lean-forward="true" selection-start-line="145" selection-start-column="32" selection-end-line="145" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FoodOrderingAppBackend-STUB/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/businness/restaurantCategoryService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="526">
-          <caret line="54" column="1" lean-forward="true" selection-start-line="54" selection-start-column="1" selection-end-line="54" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FoodOrderingAppBackend-STUB/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/dao/Restaurant_CategoryDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="526">
-          <caret line="49" column="1" lean-forward="true" selection-start-line="49" selection-start-column="1" selection-end-line="49" selection-end-column="1" />
+          <caret line="329" column="5" lean-forward="true" selection-start-line="329" selection-start-column="5" selection-end-line="329" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

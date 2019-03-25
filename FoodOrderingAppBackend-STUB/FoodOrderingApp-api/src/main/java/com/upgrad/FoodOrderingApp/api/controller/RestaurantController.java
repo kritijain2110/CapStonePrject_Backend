@@ -255,5 +255,76 @@ public class RestaurantController implements EndPointIdentifier {
 
         }
 
+        /**
+         * Method implements the getRestaurantsByCategoryId endpoint
+         *
+         * @param String category_id used to get name of restaurant
+         * @return ResponseEntity to indicate the status of the query as well as the restaurant by name
+         * @throws RestaurantNotFoundException , CategoryNotFoundException
+         */
+
+        @GetMapping(path = "/restaurant/category/{category_id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+        public ResponseEntity<RestaurantListResponse> getRestaurantsByCategoryId(@PathVariable String category_id) throws RestaurantNotFoundException, CategoryNotFoundException {
+            CategoryEntity categoryEntity = categoryService.getCategoryByUuid(category_id);
+
+            List<Restaurant_CategoryEntity> restaurantCategoryEntities = restaurantCategoryService.getAllRestaurantsByCategory(categoryEntity);
+            List<RestaurantEntity> restaurantEntityList = new ArrayList<>();
+            for (Restaurant_CategoryEntity r : restaurantCategoryEntities) {
+                RestaurantEntity restaurantEntity = restaurantService.getRestaurantById(r.getRestaurantEntity());
+                restaurantEntityList.add(restaurantEntity);
+
+            }
+            List<RestaurantList> restaurantList = new ArrayList<>();
+            if (!restaurantEntityList.isEmpty()) {
+
+                for (RestaurantEntity r : restaurantEntityList) {
+
+                    //Get the categories
+                    List<String> categories = restaurantCategoryService.getAllCategoriesByRestaurant(r);
+                    StringBuilder strBuilder = new StringBuilder("");
+                    for (int i = 0; i < categories.size(); i++) {
+                        if (i == categories.size() - 1) {
+                            strBuilder.append(categories.get(i));
+                        } else {
+                            strBuilder.append(categories.get(i) + ", ");
+                        }
+                    }
+                    String categoriesString = strBuilder.toString();
+
+                    RestaurantDetailsResponseAddress restaurantDetailsResponseAddress = new RestaurantDetailsResponseAddress();
+                    RestaurantDetailsResponseAddressState restaurantDetailsResponseAddressState = new RestaurantDetailsResponseAddressState();
+
+                    AddressEntity addressEntity = addressService.getAddressById(r.getAddress());
+
+                    StateEntity stateEntity = addressService.getStateById(addressEntity.getStateEntity());
+                    restaurantDetailsResponseAddressState.setId(UUID.fromString(stateEntity.getUuid()));
+                    restaurantDetailsResponseAddressState.setStateName(stateEntity.getState_name());
+
+                    restaurantDetailsResponseAddress.city(addressEntity.getCity());
+                    restaurantDetailsResponseAddress.pincode(addressEntity.getPincode());
+                    restaurantDetailsResponseAddress.flatBuildingName(addressEntity.getFlat_buil_number());
+                    restaurantDetailsResponseAddress.locality(addressEntity.getLocality());
+                    restaurantDetailsResponseAddress.id(UUID.fromString(addressEntity.getUuid()));
+                    restaurantDetailsResponseAddress.state(restaurantDetailsResponseAddressState);
+
+                    RestaurantList restaurant = new RestaurantList().id(UUID.fromString(r.getUuid()))
+                            .address(restaurantDetailsResponseAddress)
+                            .numberCustomersRated(r.getNumberOfCustomersRated()).photoURL(r.getPhotoUrl())
+                            .restaurantName(r.getRestaurantName()).averagePrice(r.getAveragePriceForTwo())
+                            .customerRating(r.getCustomerRating()).categories(categoriesString);
+
+
+                    restaurantList.add(restaurant);
+                }
+
+            }
+
+            return new ResponseEntity(new RestaurantListResponse().restaurants(restaurantList), HttpStatus.OK);
+
+
+
+        }
+
+
 
     }
