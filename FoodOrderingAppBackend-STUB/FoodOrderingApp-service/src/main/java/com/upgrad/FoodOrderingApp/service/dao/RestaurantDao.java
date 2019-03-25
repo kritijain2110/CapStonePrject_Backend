@@ -30,9 +30,9 @@ public class RestaurantDao {
 
 
     /**
-     * Method to get the List of All the questions
+     * Method to get the List of All the restaurants
      *
-     * @return List<QuestionEntity>
+     * @return List<RestaurantEntity>
      */
 
     public List<RestaurantEntity> getRestaurants() {
