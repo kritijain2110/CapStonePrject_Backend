@@ -9,6 +9,7 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import java.util.List;
+import com.upgrad.FoodOrderingApp.service.entity.RestaurantEntity;
 
 @Repository
 public class RestaurantDao {
@@ -35,16 +36,20 @@ public class RestaurantDao {
      * @return List<RestaurantEntity>
      */
 
-    public List<RestaurantEntity> getRestaurants() {
+    @PersistenceContext
+    private EntityManager entityManager;
+
+
+    public List<RestaurantEntity> getAllRestaurants() {
 
         try {
-
+            //order by r.customerRating desc
             String query = "select r from RestaurantEntity r";
             return entityManager.createQuery(query, RestaurantEntity.class)
                     .getResultList();
         } catch (NoResultException nre) {
 
-            return null;
+            return new ArrayList<RestaurantEntity>();
         }
     }
 

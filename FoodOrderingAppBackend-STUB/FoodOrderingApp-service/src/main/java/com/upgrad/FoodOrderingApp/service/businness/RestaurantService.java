@@ -17,11 +17,9 @@ public class RestaurantService implements EndPointIdentifier {
     RestaurantDao restaurantDao;
 
     @Transactional(propagation = Propagation.REQUIRED)
-    public List<RestaurantEntity> getRestaurants() {
+    public List<RestaurantEntity> getAllRestaurants() {
 
-        List<RestaurantEntity> restaurantEntityList = new ArrayList<>();
-        restaurantEntityList = restaurantDao.getRestaurants();
-        return restaurantEntityList;
+        return restaurantDao.getAllRestaurants();
 
     }
 
